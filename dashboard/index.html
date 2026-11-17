@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar: comps-ensemble launch radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>TOKEN RADAR <span class="pulse"></span></h1>
+    <p class="sub">Pre-token protocols ranked by comps-fitted implied value &middot; snapshot <b id="asof"></b> &middot; <span id="counts"></span></p>
+  </div>
+  <div class="badges"><span class="badge">COMPS ENSEMBLE</span><span class="badge">BOOTSTRAP RANGES</span><span class="badge">BLIND-TESTED</span></div>
+</header>
+<main>
+  <section class="panel" id="top10panel">
+    <h2>Top 10 by implied value</h2>
+    <div id="chart"></div>
+  </section>
+  <section class="panel controls" aria-label="Filters">
+    <input id="q" type="search" placeholder="Search name or slug..." aria-label="Search">
+    <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+    <select id="chain" aria-label="Chain"><option value="">All chains</option></select>
+    <select id="verdict" aria-label="Verdict"><option value="">All verdicts</option><option>FARM</option><option>THIN</option><option>SKIP</option></select>
+    <select id="sort" aria-label="Sort">
+      <option value="rank">Sort: rank</option>
+      <option value="tvl">Sort: TVL desc</option>
+      <option value="growth">Sort: 7d growth desc</option>
+      <option value="name">Sort: name A-Z</option>
+    </select>
+    <label class="chk"><input id="watch" type="checkbox"> Watchlist only</label>
+    <span id="shown" class="muted"></span>
+  </section>
+  <section class="panel" id="boardpanel">
+    <h2>Board <span class="muted" id="boardnote"></span></h2>
+    <div class="scroll"><table id="board">
+      <thead><tr><th>#</th><th>Protocol</th><th>Category</th><th>Chains</th><th>TVL</th><th>7d</th><th>Implied value</th><th>Rank range</th><th>Farm verdict</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <section class="panel" id="detail"></section>
+  <section class="panel" id="model"></section>
+  <section class="panel" id="livepanel">
+    <h2>Already trading &mdash; not ranked</h2>
+    <p class="muted">These protocols record a token with a market cap, so the radar does not rank them as launches. Their real market cap is shown for comparison.</p>
+    <div class="scroll"><table id="live">
+      <thead><tr><th>Protocol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>Mcap / TVL</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </section>
+  <footer class="muted">Implied values are this entry&rsquo;s own claim, fitted at runtime from the snapshot &mdash; never a prediction that a token launches, or when. Gas figures are estimates and vary with congestion. No network: this page runs fully offline.</footer>
+</main>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
